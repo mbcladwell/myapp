@@ -11,7 +11,7 @@
 	      (lambda (rc)
 		(let* ((help-topic "plate")
 		       (var1 "variable-one-from-controller")
-		       (var2 (get-rand-file-name "pre" "txt"))
+	;;	       (var2 (get-rand-file-name "pre" "txt"))
 		       (var3 (current-toplevel))
 		       )
 		  (view-render "page1" (the-environment)))))
