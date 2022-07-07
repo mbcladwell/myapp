@@ -3,7 +3,7 @@
 ;; This file is generated automatically by GNU Artanis.
 (define-module (myapp app controllers pages)
   #:use-module (artanis mvc controller)
-  #:use-module (myapp lib mylib))
+  #:use-module (lib mylib))
 
 (define-artanis-controller pages) ; DO NOT REMOVE THIS LINE!!!
 
