@@ -6,9 +6,16 @@
 
               (artanis utils))
  ;; Put whatever you want to be called before server initilization here
-(add-to-load-path "/home/mbc/temp/")
+(add-to-load-path "/home/mbc/temp/myapp/myapp/")
+
+;; (add-to-load-path "/home/mbc/temp/myapp/myapp")
+;; (add-to-load-path "/home/mbc/temp/myapp/myapp/lib")
+
+
 
  (init-server)
- (add-to-load-path "/home/mbc/temp/artanmod")
 
+
+(define (current-toplevel) "/home/mbc/temp/myapp")
  ;; Put whatever you want to be called before server running here
+

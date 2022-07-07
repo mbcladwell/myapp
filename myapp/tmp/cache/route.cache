@@ -1,3 +1,3 @@
 ;; Do not touch anything!!!
 ;; All things here should be automatically handled properly!!!
-(("/pages/page1" "#<procedure 7ffa1581f658 at app/controllers/pages.scm:11:14 (rc)>"))
+(("/pages/page1" "#<procedure 7f66ac033658 at app/controllers/pages.scm:11:14 (rc)>"))
