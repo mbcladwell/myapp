@@ -9,6 +9,7 @@
 ;;(add-to-load-path "/home/mbc/temp/myapp/myapp/")
 
  (add-to-load-path "/home/admin/myapp")
+ (add-to-load-path "/home/admin/myapp/myapp/lib")
 ;; (add-to-load-path "/home/mbc/temp/myapp/myapp/lib")
 
 
