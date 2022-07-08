@@ -8,7 +8,8 @@
 
     
     <%= var1 %><br><br>
-  
+    <%= var2 %><br><br>
+    
     current-toplevel: <%= var3 %>
     
  	
