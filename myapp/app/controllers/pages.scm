@@ -6,7 +6,7 @@
   #:use-module (artanis mvc controller)
   )
 
-(define-artanis-controller (myapp app controllers pages)) ; DO NOT REMOVE THIS LINE!!!
+(define-artanis-controller  pages) ; DO NOT REMOVE THIS LINE!!!
 
 (pages-define page1
 	      (lambda (rc)
