@@ -12,8 +12,8 @@
 	      (lambda (rc)
 		(let* ((help-topic "plate")
 		       (var1 "variable-one-from-controller")
-		       (var2 ( get-rand-file-name "plate" "txt"));; <=== does not work; method not found
-		      ;; (var2 ((@ (myapp lib mylib) get-rand-file-name) "plate" "txt"))		       
+		      ;; (var2 ( get-rand-file-name "plate" "txt"));; <=== does not work; method not found
+		       (var2 ((@ (myapp lib mylib) get-rand-file-name) "plate" "txt"))		       
 		       (var3 (current-toplevel))
 		       )
 		  (view-render "page1" (the-environment)))))
