@@ -6,16 +6,16 @@
    git clone --depth 1 https://github.com/opencog/guile-dbi.git 
    cd guile-dbi/guile-dbi && ./autogen.sh && ./configure --prefix=/usr 
    make -j 
-  make install && ldconfig && cd .. 
+  sudo make install && sudo ldconfig && cd .. 
        cd guile-dbd-mysql 
        ./autogen.sh && ./configure --prefix=/usr 
 	make -j 
-        sudo make install && ldconfig && cd ../../ && sudo rm -fr guile-dbi
+        sudo make install && sudo ldconfig && cd ../../ && sudo rm -fr guile-dbi
 
      git clone --depth 1 https://github.com/spk121/guile-curl.git 
      cd guile-curl && ./bootstrap && ./configure --prefix=/usr 
 make -j 
-        sudo make install && ldconfig && cd .. 
+        sudo make install && sudo ldconfig && cd .. 
 	sudo ln -s /usr/lib/guile/3.0/extensions/libguile-curl.* /usr/lib/ 
        sudo rm -fr guile-curl
 

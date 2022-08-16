@@ -1,4 +1,4 @@
-(define-module (lib mylib)
+(define-module (myapp lib mylib)
   #:use-module (srfi srfi-1)
   #:export (get-rand-file-name
 	    ))

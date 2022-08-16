@@ -1,9 +1,11 @@
 ;; Controller intro definition of artanmod
 ;; Please add your license header here.
 ;; This file is generated automatically by GNU Artanis.
-(define-module (app controllers pages)
-  #:use-module (lib mylib)
+(define-module (myapp app controllers pages)
+  #:use-module (myapp lib mylib)
+  #:use-module (artanis artanis)
   #:use-module (artanis mvc controller)
+  #:use-module (artanis webapi restful)
   )
 
 (define-artanis-controller  pages) ; DO NOT REMOVE THIS LINE!!!
