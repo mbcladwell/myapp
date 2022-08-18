@@ -29,7 +29,7 @@ make dist
 
 
 
-scp -i /home/mbc/labsolns.pem /home/mbc/projects/myapp/myapp-0.1.tar.gz admin@ec2-3-140-251-71.us-east-2.compute.amazonaws.com:.
-scp -i /home/mbc/labsolns.pem /home/mbc/syncd/tobedeleted/myapp/guix.scm admin@ec2-3-140-251-71.us-east-2.compute.amazonaws.com:.
+scp -i /home/mbc/labsolns.pem /home/mbc/projects/myapp/myapp-0.1.tar.gz admin@ec2-3-143-210-35.us-east-2.compute.amazonaws.com:.
+scp -i /home/mbc/labsolns.pem /home/mbc/syncd/tobedeleted/myapp/guix.scm admin@ec2-3-143-210-35.us-east-2.compute.amazonaws.com:.
 ##guix package --install-from-file=guix.scm
 ##source /home/mbc/.guix-profile/etc/profile

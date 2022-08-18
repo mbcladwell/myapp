@@ -7,12 +7,15 @@
     <h1>Test</h1><br><br>
 
     
-    <%= var1 %><br><br>
-    <%= var2 %><br><br>
+    Text variable: <%= var1 %><br><br>
+    Calculated variable: <%= var2 %><br><br>
     
-    current-toplevel: <%= var3 %>
+    current-toplevel: <%= var3 %><br><br>
+    %current-toplevel: <%= var4 %><br><br>
+    immutable-toplevel: <%= var5 %><br><br>
+    ENTRY-path: <%= var6 %><br><br>
+    App name from ENTRY:  <%= var7 %><br><br>
     
- 	
  
 </body></html>
 

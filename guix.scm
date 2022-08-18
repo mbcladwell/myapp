@@ -1,5 +1,5 @@
  
-  (define-module (myapp)
+  (define-module (labsolns myapp)
   #:use-module ((guix licenses) #:prefix license:)
   #:use-module (gnu packages)
   #:use-module (gnu packages guile-xyz)
@@ -85,10 +85,10 @@
     (version "0.5.3")
     (source (origin
               (method url-fetch)
-              (uri (string-append "mirror://gnu/artanis/artanis-0.5.tar.gz"))
+              (uri (string-append "mirror://gnu/artanis/artanis-0.5.1.tar.gz"))
               (sha256
                (base32
-                "1vk1kp2xhz35xa5n27cxlq9c88wk6qm7fqaac8rb0pb6k9pvsv7v"))
+                "1zfg49s7wp37px7k22qcr06rxfwyn3gv1c3jmma346xw0m8jr63w"))
               (modules '((guix build utils)))
               (snippet
                '(begin
@@ -99,7 +99,8 @@
                   (delete-file-recursively "artanis/third-party/redis")
                   (substitute* '("artanis/artanis.scm"
                                  "artanis/lpc.scm"
-                                 "artanis/oht.scm")
+                                 "artanis/oht.scm"
+				 "artanis/tpl/parser.scm")
                     (("(#:use-module \\()artanis third-party (json\\))" _
                       use-module json)
                      (string-append use-module json)))
@@ -114,63 +115,47 @@
                      (string-append pre
                                     "scm" json-string
                                     post)))
-		  (substitute* '("artanis/oht.scm"
-			       "artanis/session.scm"
-			       "artanis/cookie.scm")
-			       (("3600") "(get-conf '(cookie expire))"))
 		
-				  (substitute* "artanis/config.scm"
-			       (("   \\(\\('debug rest ...\\) \\(parse-namespace-debug rest\\)\\)")
-				"   (('debug rest ...) (parse-namespace-debug rest))\n    (('cookie rest ...) (parse-namespace-cookie rest))"
-				))
-		  (substitute* "artanis/config.scm"		
-			       ((" \\(else \\(error parse-namespace-cache \"Config: Invalid item\" item\\)\\)\\)\\)")
-				"(else (error parse-namespace-cache \"Config: Invalid item\" item))))\n\n(define (parse-namespace-cookie item)\n  (match item\n    (('expire expire) (conf-set! '(cookie expire) (->integer expire)))\n    (('maxplates maxplates) (conf-set! '(cookie maxplates) (->integer maxplates)))\n    (else (error parse-namespace-cookie \"Config: Invalid item\" item))))"))
-
-		   (substitute* "artanis/config.scm"
-		   	       (("debug.monitor = <PATHs>\")")
-		   		"debug.monitor = <PATHs>\")\n ((cookie expire)\n       3600\n      \"Cookie expiration time in seconds.\n       1 hour is 3600\n       6 hours 21600\n       1 month 2592000\n cookie.expire = <integer>\")\n\n ((cookie maxplates)\n       10\n      \"Maximum number of plates per plate-set.\n cookie.maxplates = <integer>\")"))
-		  
-
-		   (substitute* "artanis/config.scm"
-		   		(("format #f \"http://~a:~a\" \\(get-conf '\\(host addr\\)\\)")
-		   	 	 "format #f \"http://~a:~a\" real-host"))
-		   
-		   (substitute* "artanis/artanis.scm"
-		   		(("               static-page-emitter\n")
-		   		  "               static-page-emitter\n               current-myhost\n"))
-	;;============START forguix mods=========================================================================
+		  ;;============START forguix mods=========================================================================
+		  ;;immutable-current-toplevel is the original current-toplevel in /gnu/store
+		  ;;current-toplevel is the mutable toplevel in /tmp/myapp/tmp/cache
 	
 		   (substitute* "artanis/commands/work.scm"			      			       
 				(("\\(let \\(\\(entry \\(string-append \\(current-toplevel\\) \"/\" \\*artanis-entry\\*\\)\\)\\)")
-				 "(let ((entry (string-append (original-current-toplevel) \"/\" *artanis-entry*)))")
+				 "(let ((entry (string-append (immutable-toplevel) \"/\" *artanis-entry*)))")
 				(("\\(add-to-load-path \\(current-toplevel\\)\\)")
-				 "(add-to-load-path (original-current-toplevel))")
+				 "(add-to-load-path (immutable-toplevel))")
 				(("\\(add-to-load-path \\(string-append \\(current-toplevel\\) \"/lib\"\\)\\)")
-				 "(add-to-load-path (string-append (original-current-toplevel) \"/lib\"))"))		
+				 "(add-to-load-path (string-append (immutable-toplevel) \"/lib\"))"))		
 		   (substitute* '("artanis/tpl/parser.scm"
 				  "artanis/mvc/controller.scm"
 				  "artanis/webapi/restful.scm")			      			       
 				(("current-toplevel")
-				"original-current-toplevel"))				
+				"immutable-toplevel"))				
 		   (substitute* "artanis/utils.scm"			      			       
 				(("\\(let\\* \\(\\(toplevel \\(current-toplevel\\)\\)")
-				 "(let* ((toplevel (original-current-toplevel))")
+				 "(let* ((toplevel (immutable-toplevel))")
 				(("\\(current-toplevel\\) file\\)\\)\\)")
-				"(original-current-toplevel) file)))")
+				"(immutable-toplevel) file)))")
 				(("\\(if \\(current-toplevel\\)")
-				 "(if (original-current-toplevel)")
+				 "(if (immutable-toplevel)")
 				(("\\(format \\#f \"~a/pub/~a\" \\(current-toplevel\\) path\\)")
-				 "(format #f \"~a/pub/~a\" (original-current-toplevel) path)"))				
+				 "(format #f \"~a/pub/~a\" (immutable-toplevel) path)"))				
 		   (substitute* "artanis/env.scm"			      			       
 				(("            current-toplevel\n")
-				 "            current-toplevel\n            %original-current-toplevel\n            original-current-toplevel\n")
+				 "            current-toplevel\n            %immutable-toplevel\n            immutable-toplevel\n")
 				(("\\(define \\(current-toplevel\\)\n")
-					 "(define %original-current-toplevel (make-parameter #f))\n")
+					 "(define %immutable-toplevel (make-parameter #f))\n")
 				(("  \\(or \\(%current-toplevel\\)\n")
-					 "  (define (original-current-toplevel)\n")
+					 "  (define (immutable-toplevel)\n")
 				(("      \\(find-ENTRY-path identity #t\\)\\)\\)\n")
-				 "     (or (%original-current-toplevel)\n         (find-ENTRY-path identity #t)))\n\n(define (current-toplevel) \"/tmp/limsn\")"))
+			;;	 "     (or (%immutable-toplevel)\n         (find-ENTRY-path identity #t)))\n\n(define (current-toplevel) \"/tmp/myapp\")"))
+				 "     (or (%immutable-toplevel)\n         (find-ENTRY-path identity #t)))\n\n(define (current-toplevel) (string-append \"/tmp/\" (substring \"/myapp\" (+ (string-rindex \"/myapp\" #\\/) 1) (string-length \"/myapp\") ) ))")
+			;;	 "     (or (%immutable-toplevel)\n         (find-ENTRY-path identity #t)))\n\n(define (current-toplevel) (string-append \"/tmp/\" (substring %immutable-toplevel (+ (string-rindex %immutable-toplevel #\\/) 1) (string-length %immutable-toplevel) ) ))")
+				
+				)
+
+;;   \"/myapp\"  should be replaced with (find-ENTRY-path identity #t)	   
 	;;============END forguix mods=========================================================================
 				   
                    (substitute* "artanis/artanis.scm"
@@ -267,10 +252,11 @@ more. v0.5.1 contains feature enhancements required by LIMS*Nucleus")
 ;   (source "/home/admin/limsn-0.1.tar.gz")
    (source (origin
             (method url-fetch)
-            (uri (string-append "file:///home/admin/myapp-0.1.tar.gz"))
+            ;;(uri (string-append "file:///home/admin/myapp-0.1.tar.gz"))
+	    (uri (string-append "https://github.com/mbcladwell/myapp/releases/download/v0.1/myapp-0.1.tar.gz"))	    
             (sha256
              (base32
-              "0ssi1wpaf7plaswqqjwigppsg5fyh99vdlb9kzl7c9lng89ndq1i"))))
+             "1s1f26s679yc4wby3r8p0n0xi3dv451c06k4n65rmvgi0xnmbkr4"))))
    (build-system gnu-build-system)
   (arguments `(#:tests? #false ; there are none
 			#:phases (modify-phases %standard-phases
@@ -298,7 +284,7 @@ more. v0.5.1 contains feature enhancements required by LIMS*Nucleus")
                        (add-before 'install 'make-lib-dir
 			       (lambda* (#:key outputs #:allow-other-keys)
 				    (let* ((out  (assoc-ref outputs "out"))
-					   (lib-dir (string-append out "/share/guile/site/3.0/limsn/lib"))
+					   (lib-dir (string-append out "/share/guile/site/3.0/myapp/lib"))
 					   (dummy (mkdir-p lib-dir)))            				       
 				       (copy-recursively "./myapp/lib" lib-dir)
 				       #t)))
