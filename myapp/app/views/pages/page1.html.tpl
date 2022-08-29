@@ -15,7 +15,7 @@
     immutable-toplevel: <%= var5 %><br><br>
     ENTRY-path: <%= var6 %><br><br>
     App name from ENTRY:  <%= var7 %><br><br>
-    
+    current-appname:  <%= var8 %><br><br>
  
 </body></html>
 

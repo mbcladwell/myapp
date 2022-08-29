@@ -84,8 +84,7 @@ SOURCES = myapp/db/sm/.gitkeep \
           myapp/README \
           myapp/ENTRY \
           myapp/mv-artanis.sh \
-          myapp/install.sh \
-          myapp.scm
+          myapp/install.sh
 
 TESTS = 
 

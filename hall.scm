@@ -144,8 +144,7 @@
                (text-file "README")
                (text-file "ENTRY")
                (shell-file "mv-artanis")
-               (shell-file "install")))
-            (scheme-file "myapp")))
+               (shell-file "install")))))
          (tests ((directory "tests" ())))
          (programs ((directory "scripts" ())))
          (documentation

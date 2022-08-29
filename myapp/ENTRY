@@ -6,11 +6,7 @@
 
               (artanis utils))
  ;; Put whatever you want to be called before server initilization here
-;;(add-to-load-path "/home/mbc/temp/myapp/myapp/")
-
-;; (add-to-load-path "/home/admin/myapp")
-;; (add-to-load-path "/home/admin/myapp/myapp/lib")
-;; (add-to-load-path "/home/mbc/temp/myapp/myapp/lib")
+(add-to-load-path "abcdefgh/share/guile/site/3.0")
 
  (init-server)
 

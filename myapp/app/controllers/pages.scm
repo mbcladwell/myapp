@@ -14,7 +14,8 @@
 	      (lambda (rc)
 		(let* ((help-topic "plate")
 		       (var1 "variable-one-from-controller")
-		       ;;(var2 ( get-rand-file-name "plate" "txt"));; <=== does not work; method not found
+		       ;;(var2 (get-rand-file-name "plate" "txt"))
+		       ;; <=== does not work; method not found
 		       (var2 ((@ (myapp lib mylib) get-rand-file-name) "plate" "txt"))		       
 		       (var3 (current-toplevel))
 		       (var4 (%current-toplevel))
@@ -23,5 +24,6 @@
 		       (var7 (substring  (find-ENTRY-path identity #t)
 					 (+ (string-rindex (find-ENTRY-path identity #t) #\/) 1)
 					 (string-length (find-ENTRY-path identity #t)) ))
+		       (var8 (current-appname))
 		       )
 		  (view-render "page1" (the-environment)))))
