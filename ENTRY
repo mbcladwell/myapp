@@ -1,0 +1,19 @@
+;; This an Artanis ENTRY file, don't remove it!
+
+ (use-modules (artanis artanis)
+              ;; Put modules you want to be imported here
+              ;; only for this file, not controllers/views
+
+              (artanis utils))
+ ;; Put whatever you want to be called before server initilization here
+(add-to-load-path "abcdefgh/share/guile/site/3.0")
+(add-to-load-path "abcdefgh/share/guile/site/3.0/myapp")
+
+;; (add-to-load-path "/home/admin/myapp")
+;; (add-to-load-path "/home/admin/myapp/myapp/lib")
+;; (add-to-load-path "/home/mbc/temp/myapp/myapp/lib")
+
+ (init-server)
+
+ ;; Put whatever you want to be called before server running here
+
