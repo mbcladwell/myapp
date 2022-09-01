@@ -2,3 +2,61 @@
 
 #+TITLE: README for Myapp
 
+
+myapp is a toy application used to test code modifications to Artanis
+
+## Modify channels.scm
+
+nano ~/.config/guix/channels.scm
+
+add it to =~/.config/guix/channels.scm=:
+
+#+BEGIN_SRC scheme
+(use-modules (guix ci)
+	     (guix channels))
+(cons* (channel
+         (name 'labsolns)
+         (url "https://github.com/mbcladwell/labsolns")
+ 	(branch "master")
+         ;; Enable signature verification:
+         (introduction
+          (make-channel-introduction
+           "b9c1715354dbce198e4f991acc11458180259edc"
+           (openpgp-fingerprint
+            "E709 94D1 9CB0 FE2B CAC4  9E54 0BF8 F292 4D2B 1944"))))
+        %default-channels)
+#+END_SRC
+
+Then run =guix pull=.
+
+## Install
+
+=guix package -i myapp=
+=init-myapp.sh=
+
+## Launch and Navigate 
+
+=start-myapp.sh=
+go to: [[http://127.0.0.1:3000/pages/page1][http://127.0.0.1:3000/pages/page1]]
+
+## Output 
+
+Test
+
+
+Text variable: variable-one-from-controller
+
+Calculated variable: plate-8222479441190188284525.txt
+
+current-toplevel: /tmp/myapp
+
+%current-toplevel: /gnu/store/h90gbd1snxbyf6ix96skmkc1p6807r2n-myapp-0.1.0/share/guile/site/3.0/myapp
+
+immutable-toplevel: /gnu/store/h90gbd1snxbyf6ix96skmkc1p6807r2n-myapp-0.1.0/share/guile/site/3.0/myapp
+
+ENTRY-path: /gnu/store/h90gbd1snxbyf6ix96skmkc1p6807r2n-myapp-0.1.0/share/guile/site/3.0/myapp
+
+App name from ENTRY: myapp
+
+current-appname: myapp
+
