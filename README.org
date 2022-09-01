@@ -2,7 +2,7 @@
 
 myapp is a toy application used to test code modifications to Artanis
 
-# Modify channels.scm
+* Modify channels.scm
 
 nano ~/.config/guix/channels.scm
 
