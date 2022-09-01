@@ -26,19 +26,19 @@ add it to =~/.config/guix/channels.scm=:
 
 Then run =guix pull=.
 
-# Install
+* Install
 
 =guix package -i myapp=
 
 =init-myapp.sh=
 
-# Launch and Navigate 
+* Launch and Navigate 
 
 =start-myapp.sh=
 
 go to: [[http://127.0.0.1:3000/pages/page1][http://127.0.0.1:3000/pages/page1]]
 
-# Output 
+* Output 
 
 Test
 
