@@ -1,4 +1,3 @@
-# -*- mode: org; coding: utf-8; -*-
 
 #+TITLE: README for Myapp
 
@@ -29,13 +28,13 @@ add it to =~/.config/guix/channels.scm=:
 
 Then run =guix pull=.
 
-#Install
+# Install
 
 =guix package -i myapp=
 
 =init-myapp.sh=
 
-#Launch and Navigate 
+# Launch and Navigate 
 
 =start-myapp.sh=
 
