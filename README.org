@@ -1,6 +1,4 @@
-
 #+TITLE: README for Myapp
-
 
 myapp is a toy application used to test code modifications to Artanis
 
