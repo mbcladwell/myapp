@@ -110,7 +110,7 @@
 		
 		  ;;============START forguix mods=========================================================================
 		  ;;immutable-toplevel is the original current-toplevel in /gnu/store
-		  ;;current-toplevel is the mutable toplevel in /tmp/myapp/tmp/cache
+		  ;;current-toplevel is the mutable toplevel in /tmp/<appname>/tmp/cache
 	
 		   (substitute* "artanis/commands/work.scm"			      			       
 				(("\\(let \\(\\(entry \\(string-append \\(current-toplevel\\) \"/\" \\*artanis-entry\\*\\)\\)\\)")
@@ -135,10 +135,6 @@
 				  " (let ((p (-> path))(dummy (format (artanis-current-output) \"current-appname: ~a\" (current-appname) )))")
 				(("\\(format \\#f \"~a/pub/~a\" \\(current-toplevel\\) path\\)")
 				 "(format #f \"~a/pub/~a\" (immutable-toplevel) path)")
-			;;	(("        \\(format \\#f \"~a\\/tmp\\/cache\\/index.html\" \\(current-toplevel\\)\\)")		 
-			;;      	 "        (format #f \"/tmp/~a/tmp/cache/index.html\" (current-appname))")
-			;;	(("\\(format \\#f \"~a\\/tmp\\/cache\\/~a.html\" \\(current-toplevel\\) \\(-> path\\)\\)\\)\\)\\)")
-			;;	 "(format #f \"/tmp/~a/tmp/cache/~a.html\" (current-appname) (-> path)))))")
 				)						  				
 				
 		   (substitute* "artanis/env.scm"
@@ -254,7 +250,7 @@ more. v0.5.2 contains feature enhancements required by LIMS*Nucleus")
 	    (uri (string-append "https://github.com/mbcladwell/myapp/releases/download/v0.1/myapp-0.1.tar.gz"))	    
             (sha256
              (base32
-             "0cjb628b4n2qv4m9cy5j9rvgx2mqrqbr6b1nnkwvfbnswsbj4nmw"))));;anchor1
+              "1309j8816rgr83cricnvxb167ad6wjlvzsfdhs4xzzb9cmy10358"))));;anchor1
    (build-system gnu-build-system)
    
    (inputs (list guile-3.0 gnuplot))
