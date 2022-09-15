@@ -6,8 +6,8 @@
 
               (artanis utils))
  ;; Put whatever you want to be called before server initilization here
-(add-to-load-path "abcdefgh/share/guile/site/3.0")
-(add-to-load-path "abcdefgh/share/guile/site/3.0/myapp")
+(add-to-load-path "PATH_INTO_STORE/share/guile/site/3.0")
+(add-to-load-path "PATH_INTO_STORE/share/guile/site/3.0/myapp")
 
 ;; (add-to-load-path "/home/admin/myapp")
 ;; (add-to-load-path "/home/admin/myapp/myapp/lib")

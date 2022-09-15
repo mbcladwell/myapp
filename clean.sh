@@ -22,16 +22,11 @@ cp /home/mbc/syncd/tobedeleted/myapp/hall.scm .
 ##cp /home/mbc/syncd/tobedeleted/myapp/myapp.scm .
 cp /home/mbc/syncd/tobedeleted/myapp/Makefile.am .
 
-
 autoreconf -vif && ./configure && make
-
 
 cp /home/mbc/syncd/tobedeleted/myapp/scripts/*.sh ./scripts
 
-
 make dist
-
-
 
 ##scp -i /home/mbc/labsolns.pem /home/mbc/projects/myapp/myapp-0.1.tar.gz admin@ec2-18-216-137-164.us-east-2.compute.amazonaws.com:.
 ##scp -i /home/mbc/labsolns.pem /home/mbc/syncd/tobedeleted/myapp/guix.scm admin@:.

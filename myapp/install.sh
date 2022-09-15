@@ -20,6 +20,22 @@ make -j
        sudo rm -fr guile-curl
 
 
+wget https://download.savannah.gnu.org/releases/guile-json/guile-json-4.7.2.tar.gz
+tar -xf guile-json-4.7.2.tar.gz
+ cd guile-json-4.7.2
+ ./configure --prefix=/usr && make
+ sudo make install
+ cd ..
+ sudo rm -fr guile-json-4.7.2
+
+wget https://download.savannah.gnu.org/releases/guile-redis/guile-redis-2.2.0.tar.gz
+tar -xf guile-redis-2.2.0.tar.gz
+cd guile-redis-2.2.0
+./configure --prefix=/usr && make
+ sudo make install
+ cd ..
+ sudo rm -fr guile-redis-2.2.0.tar.gz
+
      git clone --depth 1 --single-branch --branch master git://git.savannah.gnu.org/artanis.git 
         cd artanis 
  ./autogen.sh 
@@ -27,3 +43,5 @@ make -j
 	 make -j 
     sudo make install && cd .. && rm -fr artanis
 
+
+##git clone --depth 1 --single-branch --branch guix git@gitlab.com:mbcladwell/artanis.git

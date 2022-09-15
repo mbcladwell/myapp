@@ -1,13 +1,17 @@
 #! /bin/bash
 
-sudo scp -i /home/mbc/labsolns.pem /gnu/store/i4k9290jrrf4lkf068d3gghbmp9xjv28-artanis-0.5.2/share/guile/site/3.0/artanis/config.scm admin@ec2-3-140-216-184.us-east-2.compute.amazonaws.com:./temp
-sudo scp -i /home/mbc/labsolns.pem /gnu/store/i4k9290jrrf4lkf068d3gghbmp9xjv28-artanis-0.5.2/share/guile/site/3.0/artanis/oht.scm admin@ec2-3-140-216-184.us-east-2.compute.amazonaws.com:./temp
-sudo scp -i /home/mbc/labsolns.pem /gnu/store/i4k9290jrrf4lkf068d3gghbmp9xjv28-artanis-0.5.2/share/guile/site/3.0/artanis/session.scm admin@ec2-3-140-216-184.us-east-2.compute.amazonaws.com:./temp
-sudo scp -i /home/mbc/labsolns.pem /gnu/store/i4k9290jrrf4lkf068d3gghbmp9xjv28-artanis-0.5.2/share/guile/site/3.0/artanis/cookie.scm admin@ec2-3-140-216-184.us-east-2.compute.amazonaws.com:./temp
-sudo scp -i /home/mbc/labsolns.pem /gnu/store/i4k9290jrrf4lkf068d3gghbmp9xjv28-artanis-0.5.2/share/guile/site/3.0/artanis/utils.scm admin@ec2-3-140-216-184.us-east-2.compute.amazonaws.com:./temp
-sudo scp -i /home/mbc/labsolns.pem /gnu/store/i4k9290jrrf4lkf068d3gghbmp9xjv28-artanis-0.5.2/share/guile/site/3.0/artanis/env.scm admin@ec2-3-140-216-184.us-east-2.compute.amazonaws.com:./temp
-sudo scp -i /home/mbc/labsolns.pem /gnu/store/i4k9290jrrf4lkf068d3gghbmp9xjv28-artanis-0.5.2/share/guile/site/3.0/artanis/tpl/parser.scm admin@ec2-3-140-216-184.us-east-2.compute.amazonaws.com:./temp
-sudo scp -i /home/mbc/labsolns.pem /gnu/store/i4k9290jrrf4lkf068d3gghbmp9xjv28-artanis-0.5.2/share/guile/site/3.0/artanis/mvc/controller.scm admin@ec2-3-140-216-184.us-east-2.compute.amazonaws.com:./temp
-sudo scp -i /home/mbc/labsolns.pem /gnu/store/i4k9290jrrf4lkf068d3gghbmp9xjv28-artanis-0.5.2/share/guile/site/3.0/artanis/webapi/restful.scm admin@ec2-3-140-216-184.us-east-2.compute.amazonaws.com:./temp
-sudo scp -i /home/mbc/labsolns.pem /gnu/store/i4k9290jrrf4lkf068d3gghbmp9xjv28-artanis-0.5.2/share/guile/site/3.0/artanis/commands/work.scm admin@ec2-3-140-216-184.us-east-2.compute.amazonaws.com:./temp
-sudo scp -i /home/mbc/labsolns.pem ./mv-artanis.sh admin@ec2-3-140-216-184.us-east-2.compute.amazonaws.com:.
+PATH_INTO_STORE=/gnu/store/7jph4wbr5rhcyy5prawix29858fpg5ly-artanis-0.5.3/share/guile/site/3.0
+#DEST=ec2-18-221-117-115.us-east-2.compute.amazonaws.com
+DEST=/home/mbc/projects/artanis
+
+cp $PATH_INTO_STORE'/artanis/config.scm' $DEST'/artanis'
+cp $PATH_INTO_STORE'/artanis/oht.scm' $DEST'/artanis'
+cp $PATH_INTO_STORE'/artanis/session.scm' $DEST'/artanis'
+cp $PATH_INTO_STORE'/artanis/cookie.scm' $DEST'/artanis'
+cp $PATH_INTO_STORE'/artanis/utils.scm' $DEST'/artanis'
+cp $PATH_INTO_STORE'/artanis/env.scm' $DEST'/artanis'
+cp $PATH_INTO_STORE'/artanis/tpl/parser.scm' $DEST'/artanis/tpl'
+cp $PATH_INTO_STORE'/artanis/mvc/controller.scm' $DEST'/artanis/mvc'
+cp $PATH_INTO_STORE'/artanis/webapi/restful.scm' $DEST'/artanis/webapi'
+cp $PATH_INTO_STORE'/artanis/commands/work.scm' $DEST'/artanis/commands'
+

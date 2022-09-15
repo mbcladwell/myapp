@@ -264,7 +264,7 @@ more. v0.5.1 contains feature enhancements required by LIMS*Nucleus")
 				 (substitute* '("./scripts/init-myapp.sh"
 						"./scripts/start-myapp.sh"
 						"./myapp/ENTRY")						
-						(("abcdefgh")
+						(("PATH_INTO_STORE")
 						(assoc-ref outputs "out" )) )
 				 #t))		       			       
 		(add-after 'unpack 'augment-GUILE_LOAD_PATH

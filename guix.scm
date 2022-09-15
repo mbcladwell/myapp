@@ -149,14 +149,11 @@
                                 (("  \\(or \\(%current-toplevel\\)\n")
                                          "  (define (immutable-toplevel)\n")
                                 (("      \\(find-ENTRY-path identity #t\\)\\)\\)\n")
-                        ;;       "     (or (%immutable-toplevel)\n         (find-ENTRY-path identity #t)))\n\n(define (current-toplevel) \"/tmp/myapp\")"))
-                                 "     (or (%immutable-toplevel)\n         (find-ENTRY-path identity #t)))\n\n(define (current-toplevel) (string-append \"/tmp/\" (substring \"/myapp\" (+ (string-rindex \"/myapp\" #\\/) 1) (string-length \"/myapp\") ) ))")
-                        ;;       "     (or (%immutable-toplevel)\n         (find-ENTRY-path identity #t)))\n\n(define (current-toplevel) (string-append \"/tmp/\" (substring %immutable-toplevel (+ (string-rindex %immutable-toplevel #\\/) 1) (string-length %immutable-toplevel) ) ))")
+                                 "     (or (%immutable-toplevel)\n         (find-ENTRY-path identity #t)))\n\n(define (current-toplevel) (string-append \"/tmp/\" (and=> (string-match \".+/(.+)$\" (getcwd)) (lambda (m) (match:substring m 1))))) ")                       
                                
                                 )    ;;use of (current-appname) causes disk thrashing and freezing
+				     ;; (find-ENTRY-path identity #t)  evaluates to #f and so can't be used
 				
-				
-;;   \"/myapp\"  should be replaced with (find-ENTRY-path identity #t)	   
 	;;============END forguix mods=========================================================================
 				   
                    (substitute* "artanis/artanis.scm"
@@ -242,7 +239,7 @@ services and web resources.  The framework aims to alleviate the overhead
 associated with common activities performed in web development.  Artanis
 provides several tools for web development: database access, templating
 frameworks, session management, URL-remapping for RESTful, page caching, and
-more. v0.5.1 contains feature enhancements required by LIMS*Nucleus")
+more. v0.5.2 contains feature enhancements required by LIMS*Nucleus")
     (home-page "https://www.gnu.org/software/artanis/")
     (license (list license:gpl3+ license:lgpl3+)))) ;dual license
 
@@ -257,7 +254,7 @@ more. v0.5.1 contains feature enhancements required by LIMS*Nucleus")
 	    (uri (string-append "https://github.com/mbcladwell/myapp/releases/download/v0.1/myapp-0.1.tar.gz"))	    
             (sha256
              (base32
-             "16vk2qdii711mq2wnk74z4cba9m4q997rqjbkfwjgqq0lcqhk0g9"))));;anchor1
+             "0cjb628b4n2qv4m9cy5j9rvgx2mqrqbr6b1nnkwvfbnswsbj4nmw"))));;anchor1
    (build-system gnu-build-system)
    
    (inputs (list guile-3.0 gnuplot))
@@ -272,7 +269,7 @@ more. v0.5.1 contains feature enhancements required by LIMS*Nucleus")
 						"./scripts/start-myapp.sh"
 						"./myapp/ENTRY")
 					;;      	"./ENTRY")					      
-						(("abcdefgh")
+						(("PATH_INTO_STORE")
 						(assoc-ref outputs "out" )) )
 				 #t))		       			       
 

@@ -16,7 +16,7 @@
     ENTRY-path: <%= var6 %><br><br>
     App name from ENTRY:  <%= var7 %><br><br>
     current-appname:  <%= var8 %><br><br>
- 
+    one up f/ENTRY:  <%= var9 %><br><br>
 </body></html>
 
 
