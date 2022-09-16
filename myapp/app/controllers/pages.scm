@@ -4,15 +4,20 @@
 
 ;;to satisfy Guix requirement that (define-module (<module-name>)...) is first statement
 ;;possibly creates a phantom module that is never used
+
 (define-module (myapp app controllers pages)
   #:use-module (artanis artanis)
-  #:use-module (artanis mvc controller))
+  #:use-module (artanis mvc controller)) ;;to eliminate error
+
+
+;;error: define-artanis-controller: unbound variable
+;;hint: Did you forget `(use-modules (artanis mvc controller))'?
 
 
 (define-artanis-controller pages) ; DO NOT REMOVE THIS LINE!!!
+;;libraries must be imported after define-artanis-controller
 (use-modules (myapp lib mylib)
-	     (artanis mvc controller));;to eliminate warning
-
+	     )
 
 (pages-define page1
 	      (lambda (rc)
